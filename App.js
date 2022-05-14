@@ -1,0 +1,56 @@
+import 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import Home from './src/Pages/Home/index.js';
+import Gender from './src/Pages/Gender';
+import FormData from './src/Pages/FormData';
+import HoroscopeData from './src/Pages/HoroscopeData';
+const Stack = createStackNavigator();
+
+const App = () => {
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName={'Home'}
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#0e5090',
+            },
+            headerTintColor: 'white',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              textAlign: 'right',
+            },
+          }}>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              header: () => null,
+            }}
+          />
+          <Stack.Screen
+            name="Gender"
+            component={Gender}
+            options={{title: 'Tu Género'}}
+          />
+          <Stack.Screen
+            name="Form"
+            component={FormData}
+            options={{title: 'Tus Datos'}}
+          />
+          <Stack.Screen
+            name="Horoscope"
+            component={HoroscopeData}
+            options={{title: 'Tu Horóscopo'}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+};
+
+export default App;
